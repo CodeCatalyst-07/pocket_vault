@@ -78,6 +78,17 @@ export function getWarrantyStatus(expiryDate) {
   return 'active';
 }
 
+// Examples: '245 days left', '1 day left', 'Expires today', 'Expired 12 days ago'.
+export function getDaysLeftLabel(expiryDate) {
+  const daysLeft = getDaysLeft(expiryDate);
+  if (daysLeft === 0) return 'Expires today';
+  if (daysLeft < 0) {
+    const daysAgo = Math.abs(daysLeft);
+    return `Expired ${daysAgo} ${daysAgo === 1 ? 'day' : 'days'} ago`;
+  }
+  return `${daysLeft} ${daysLeft === 1 ? 'day' : 'days'} left`;
+}
+
 // formatDate('2026-03-12') returns '12 Mar 2026'.
 export function formatDate(dateString) {
   const date = parseDate(dateString);

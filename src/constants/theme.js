@@ -1,4 +1,6 @@
 // Shared colours and spacing keep every screen consistent.
+export const EXPIRING_SOON_DAYS = 30;
+
 export const theme = {
   colors: {
     primary: '#0F766E',
